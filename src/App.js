@@ -63,6 +63,11 @@ function App() {
         })
       })
     }
+      const updatedTasks = {
+      todos: [...tasks.todos, todo]
+    }
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+    setTasks(updatedTasks);
   }
 
   const todosCards = tasks.todos.map((todo, i) => (
