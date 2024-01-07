@@ -64,7 +64,7 @@ function App() {
       })
     }
       const updatedTasks = {
-      todos: [...tasks.todos, todo]
+      todos: [...tasks.todos]
     }
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
     setTasks(updatedTasks);
