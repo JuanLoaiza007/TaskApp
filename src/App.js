@@ -10,7 +10,7 @@ function App() {
   const [appState, setAppState] = useState({
     "appName": "TaskApp",
     "showenVersion": "...",
-    "version": "1.0",
+    "version": "1.1.0",
     "versionState": "deactivated"
   });
 
@@ -34,12 +34,11 @@ function App() {
 
   useEffect(() => {
     switchVersion();
-    /* Guardar en navegador parte 1
+    /* Guardar en navegador parte 1  */
     const storedTasks = localStorage.getItem('tasks');
     if (storedTasks) {
       setTasks(JSON.parse(storedTasks));
     }
-    */
     
   }, []);
 
@@ -48,13 +47,12 @@ function App() {
       todos: [...tasks.todos, todo]
     })
 
-    /* Guardar en navegador parte 2
+    /* Guardar en navegador parte 2  */
     const updatedTasks = {
       todos: [...tasks.todos, todo]
     }
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
     setTasks(updatedTasks);
-    */
   }
 
   function handleRemove(index){
