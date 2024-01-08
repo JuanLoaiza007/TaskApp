@@ -64,7 +64,7 @@ function TodoForm ({onAddTodo}) {
         id="toDoForm"
         className="card-body"
         onSubmit={handleSubmit} >
-        <div className="form-group">
+        <div className="form-group my-2">
           <input
             type="text"
             name="title"
@@ -73,7 +73,7 @@ function TodoForm ({onAddTodo}) {
             onChange={handleInput}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group my-2">
           <input
             type="text"
             name="responsible"
@@ -82,7 +82,7 @@ function TodoForm ({onAddTodo}) {
             onChange={handleInput}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group my-2">
           <input
             type="text"
             name="description"
@@ -91,7 +91,7 @@ function TodoForm ({onAddTodo}) {
             onChange={handleInput}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group my-2">
           <p className="h5 mt-2"> Prioridad </p>
           <select
           name="priority"
@@ -103,7 +103,7 @@ function TodoForm ({onAddTodo}) {
           </select>
         </div>
         <div className="card-footer mt-4">
-          <div className="form-group">
+          <div className="form-group my-2">
             <button 
               type="submit" 
               className="btn btn-success mx-2"> Agregar </button>
