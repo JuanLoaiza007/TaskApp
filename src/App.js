@@ -10,7 +10,7 @@ function App() {
   const [appState, setAppState] = useState({
     "appName": "TaskApp",
     "showenVersion": "...",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "versionState": "deactivated"
   });
 
@@ -56,7 +56,7 @@ function App() {
   }
 
   function handleRemove(index){
-    if (window.confirm("Seguro que desea eliminar la tarea?")){
+    if (window.confirm("¿Seguro que desea eliminar la tarea?")){
       setTasks({
         todos: tasks.todos.filter((e, i) => {
           return i !== index;
@@ -71,12 +71,25 @@ function App() {
     }
   }
 
+  function deleteAllTasks() {
+    if (window.confirm("¿Seguro que desea eliminar todas las tareas? \nEsta opciones irreversible")){
+      setTasks({
+        todos: []
+      });
+
+      const updatedTasks = {
+        todos: []
+      }
+      localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+    }
+  }
+
   function createPillForPriority(priority){
     let pillClassName = "bg-";
 
-    if (priority ==="high") {
+    if (priority ==="alta") {
       pillClassName += "danger";
-    } else if (priority ==="medium") {
+    } else if (priority ==="media") {
       pillClassName += "warning";
     } else {
       pillClassName += "primary";
@@ -86,7 +99,7 @@ function App() {
 
     return (
       <span className={pillClassName}>
-        Priority {priority}
+        Prioridad {priority}
       </span>
     );
   }
@@ -125,22 +138,34 @@ function App() {
         logo={logo}
       />
 
+      <div className='m-4'>
       <button 
-      className='btn btn-warning m-4'
+      className='btn btn-warning m-3'
       onClick={switchVersion}>
-        Ocultar/Activar version
+        Ocultar/Mostrar version
       </button>     
-      
+      <button 
+        type="button" 
+        class="btn btn-danger m-3"
+        onClick={deleteAllTasks}> 
+        Eliminar todas las tareas
+      </button>
+      </div>
       <div className='container'>
-      <div className='col-md-4'>
+      <div className='row justify-content-center'>
+        <div className='col-md-5 col-sm-12'>
           <TodoForm 
             onAddTodo={handleAddTodo}
           />
-          </div>
+        </div>
+      </div>
+        
         <div className='row mt-4'>
           {todosCards}   
         </div>
       </div>
+      <footer className="navbar bg-dark mt-4">
+      </footer>
     </div>
   );
 }

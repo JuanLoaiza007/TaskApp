@@ -9,6 +9,7 @@ class Navigation extends Component {
         <h4 className='text-white me-auto'>
           {appName + " v"+ showenVersion}          
         </h4> 
+        <p className="text-white m-2">Cantidad: </p>
         <span className='badge rounded-pill bg-light text-dark'>
           {tasksCount}
         </span>

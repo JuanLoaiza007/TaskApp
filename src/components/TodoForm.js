@@ -97,9 +97,9 @@ function TodoForm ({onAddTodo}) {
           name="priority"
           className="form-control"
           onChange={handleInput}>
-            <option> low </option>
-            <option> medium </option>
-            <option> high </option>
+            <option> baja </option>
+            <option> media </option>
+            <option> alta </option>
           </select>
         </div>
         <div className="card-footer mt-4">

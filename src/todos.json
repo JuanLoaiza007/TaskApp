@@ -1,22 +1,22 @@
 {
   "todos": [
     {
-      "title": "Task 1",
+      "title": "Tarea 1",
       "responsible": "Juan",
       "description": "lorem impsum 1",
-      "priority": "high"
+      "priority": "alta"
     },
     {
-      "title": "Task 2",
+      "title": "Tarea 2",
       "responsible": "Andres",
       "description": "lorem impsum 2",
-      "priority": "medium"
+      "priority": "media"
     },
     {
-      "title": "Task 3",
+      "title": "Tarea 3",
       "responsible": "Carlos",
       "description": "lorem impsum 3",
-      "priority": "low"
+      "priority": "baja"
     }
   ]
 }
