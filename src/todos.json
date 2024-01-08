@@ -3,19 +3,19 @@
     {
       "title": "Tarea 1",
       "responsible": "Juan",
-      "description": "lorem impsum 1",
+      "description": "Descripción de tarea 1",
       "priority": "alta"
     },
     {
       "title": "Tarea 2",
       "responsible": "Andres",
-      "description": "lorem impsum 2",
+      "description": "Descripción de tarea 2",
       "priority": "media"
     },
     {
       "title": "Tarea 3",
       "responsible": "Carlos",
-      "description": "lorem impsum 3",
+      "description": "Descripción de tarea 3",
       "priority": "baja"
     }
   ]

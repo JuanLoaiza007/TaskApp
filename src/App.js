@@ -10,11 +10,11 @@ function App() {
   const [appState, setAppState] = useState({
     "appName": "TaskApp",
     "showenVersion": "...",
-    "version": "1.5.0",
+    "version": "1.5.1",
     "versionState": "deactivated"
   });
 
-  const [tasks, setTasks] = useState(todos);
+  const [tasks, setTasks] = useState({ todos: [] });
 
   function switchVersion() {
     let showenVersion = appState.version;
@@ -34,10 +34,12 @@ function App() {
 
   useEffect(() => {
     switchVersion();
-    /* Guardar en navegador parte 1  */
     const storedTasks = localStorage.getItem('tasks');
-    if (storedTasks) {
+
+    if (storedTasks) {  // Si hay tareas del usuario en el navegador cargarlas
       setTasks(JSON.parse(storedTasks));
+    } else {            // Sino, crear tareas por defecto
+      setTasks(todos);
     }
     
   }, []);
@@ -47,7 +49,6 @@ function App() {
       todos: [...tasks.todos, todo]
     })
 
-    /* Guardar en navegador parte 2  */
     const updatedTasks = {
       todos: [...tasks.todos, todo]
     }
@@ -130,7 +131,7 @@ function App() {
   ));  
 
   return (
-    <div className="App">
+    <div className="App">      
       <Navigation
         appName={appState.appName}
         showenVersion={appState.showenVersion}
@@ -138,34 +139,34 @@ function App() {
         logo={logo}
       />
 
-      <div className='m-4'>
-      <button 
-      className='btn btn-warning m-3'
-      onClick={switchVersion}>
-        Ocultar/Mostrar version
-      </button>     
-      <button 
-        type="button" 
-        class="btn btn-danger m-3"
-        onClick={deleteAllTasks}> 
-        Eliminar todas las tareas
-      </button>
-      </div>
-      <div className='container'>
-      <div className='row justify-content-center'>
-        <div className='col-md-5 col-sm-12'>
-          <TodoForm 
-            onAddTodo={handleAddTodo}
-          />
+      <div className='mb-4'>
+        <div className='m-4'>
+          <button 
+          className='btn btn-warning m-3'
+          onClick={switchVersion}>
+            Ocultar/Mostrar version
+          </button>     
+          <button 
+            type="button" 
+            class="btn btn-danger m-3"
+            onClick={deleteAllTasks}> 
+            Eliminar todas las tareas
+          </button>
+        </div>
+        <div className='container'>
+          <div className='row justify-content-center'>
+            <div className='col-md-5 col-sm-12'>
+              <TodoForm 
+                onAddTodo={handleAddTodo}
+              />
+            </div>
+          </div>
+          
+          <div className='row mt-4'>
+            {todosCards}   
+          </div>
         </div>
       </div>
-        
-        <div className='row mt-4'>
-          {todosCards}   
-        </div>
-      </div>
-      <footer className="navbar bg-dark mt-4">
-      </footer>
     </div>
   );
 }
