@@ -10,7 +10,7 @@ function App() {
   const [appState, setAppState] = useState({
     "appName": "TaskApp",
     "showenVersion": "...",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "versionState": "deactivated"
   });
 
@@ -62,14 +62,13 @@ function App() {
           return i !== index;
         })
       })
-    }
-    
-    const updatedTasks = {
-      todos: tasks.todos.filter((e, i) => {
-      return i !== index;
-    })}
-    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
 
+      const updatedTasks = {
+        todos: tasks.todos.filter((e, i) => {
+        return i !== index;
+      })}
+      localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+    }
   }
 
   const todosCards = tasks.todos.map((todo, i) => (
