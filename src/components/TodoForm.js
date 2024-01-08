@@ -57,6 +57,9 @@ function TodoForm ({onAddTodo}) {
   
   return (
     <div className="card">
+      <div className="card-header">
+        <h4>Agregar tarea</h4>
+      </div>
       <form 
         id="toDoForm"
         className="card-body"
@@ -89,6 +92,7 @@ function TodoForm ({onAddTodo}) {
           />
         </div>
         <div className="form-group">
+          <p className="h5 mt-2"> Prioridad </p>
           <select
           name="priority"
           className="form-control"
@@ -98,8 +102,16 @@ function TodoForm ({onAddTodo}) {
             <option> high </option>
           </select>
         </div>
-        <div className="form-group">
-          <button type="submit" className="btn btn-primary mt-4"> Agregar </button>
+        <div className="card-footer mt-4">
+          <div className="form-group">
+            <button 
+              type="submit" 
+              className="btn btn-success mx-2"> Agregar </button>
+            <button 
+              type="button" 
+              className="btn btn-danger mx-2" 
+              onClick={reloadForm}> Limpiar </button>
+          </div>
         </div>
       </form>
     </div>
