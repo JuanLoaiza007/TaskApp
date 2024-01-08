@@ -10,7 +10,7 @@ function App() {
   const [appState, setAppState] = useState({
     "appName": "TaskApp",
     "showenVersion": "...",
-    "version": "1.1.2",
+    "version": "1.2.0",
     "versionState": "deactivated"
   });
 

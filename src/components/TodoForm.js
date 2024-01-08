@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 
 function TodoForm ({onAddTodo}) { 
-
-  const [state, setState] = useState({
+  const initialFormValues = {
     title: '',
     responsible: '',
     description: '',
     priority: 'low'
-  });
+  };
+
+  const [state, setState] = useState(initialFormValues);  
 
   function handleInput(e) {
     const { name, value } = e.target;
@@ -17,14 +18,47 @@ function TodoForm ({onAddTodo}) {
     }));
   }
 
-  function handleSubmit(e){
+  function handleSubmit(e) {
     e.preventDefault();
+    const trimmedState = {};
+
+    for (const key in state) {
+      if (key in state) {
+        trimmedState[key] = state[key].trim();
+      }
+    }
+  
+    const errors = validateForm(trimmedState);
+
+    if (errors.length > 0) {
+      alert(
+        "No se ha podido agregar la tarea:\n\n" +
+        errors.join("\n"));
+      return; // Salida temprana por errores de validacion en el formulario
+    }
+  
     onAddTodo(state);
+    reloadForm();
+    console.log(state);
+  }
+  
+  function validateForm({ title, responsible}) {
+    const errors = [];
+  
+    if (!title) errors.push("El campo de título no debe estar vacío.");
+  
+    return errors;
+  }
+
+  function reloadForm() {
+    document.getElementById("toDoForm").reset();
+    setState(initialFormValues);  
   }
   
   return (
     <div className="card">
       <form 
+        id="toDoForm"
         className="card-body"
         onSubmit={handleSubmit} >
         <div className="form-group">
