@@ -10,7 +10,7 @@ function App() {
   const [appState, setAppState] = useState({
     "appName": "TaskApp",
     "showenVersion": "...",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "versionState": "deactivated"
   });
 
@@ -71,15 +71,33 @@ function App() {
     }
   }
 
+  function createPillForPriority(priority){
+    let pillClassName = "bg-";
+
+    if (priority ==="high") {
+      pillClassName += "danger";
+    } else if (priority ==="medium") {
+      pillClassName += "warning";
+    } else {
+      pillClassName += "primary";
+    }
+
+    pillClassName = "badge rounded-pill " + pillClassName;
+
+    return (
+      <span className={pillClassName}>
+        Priority {priority}
+      </span>
+    );
+  }
+
   const todosCards = tasks.todos.map((todo, i) => (
     <div className='col-md-4'>
       <div className='mt-4'>
       <div className="card" key={i}>
         <div className='card-header'>
           <h1> {todo.title} </h1>
-          <span className='badge rounded-pill bg-danger'> 
-          {todo.priority}
-          </span>
+          {createPillForPriority(todo.priority)}
         </div>
         <div className='card-body'>
           <p>{todo.description}</p>
